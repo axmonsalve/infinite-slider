@@ -2,6 +2,7 @@ const slideContainer = document.querySelector('.container');
 const slide = document.querySelector('.slides');
 const nextBtn = document.getElementById('next-btn');
 const prevBtn = document.getElementById('prev-btn');
+const slideControls = document.querySelector('.slide-controls');
 const interval = 3000;
 
 let slides = document.querySelectorAll('.slide');
@@ -60,9 +61,14 @@ const moveToPreviousSlide = () => {
 
 slideContainer.addEventListener('mouseenter', () => {
   clearInterval(slideId);
+  slideControls.style.opacity = '1';
+  
 });
 
-slideContainer.addEventListener('mouseleave', startSlide);
+slideContainer.addEventListener('mouseleave', () =>{
+  startSlide();
+  slideControls.style.opacity = '0';
+} );
 
 nextBtn.addEventListener('click', moveToNextSlide);
 
