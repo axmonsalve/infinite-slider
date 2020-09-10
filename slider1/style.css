@@ -1,18 +1,18 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-.container{
+.container {
   margin: 0 auto;
   width: 100%;
-  height: 400px;
+  height: 100%;
   position: relative;
   overflow: hidden;
 }
 
-.slides{
+.slides {
   display: flex;
   height: 100%;
 }
@@ -21,12 +21,12 @@
   min-width: 100%;
 }
 
-.slide img{
+.slide img {
   width: 100%;
   height: 100%;
 }
 
-.slide-controls{
+.slide-controls {
   position: absolute;
   top: 50%;
   left: 0;
@@ -38,8 +38,8 @@
   transition: .3s;
 }
 
-#next-btn
-, #prev-btn{
+#next-btn,
+#prev-btn {
   cursor: pointer;
   background: #fff;
   border-radius: 50%;
@@ -55,7 +55,33 @@
 }
 
 
-#next-btn:focus
-, #prev-btn:focus{
+#next-btn:focus,
+#prev-btn:focus {
   outline: none;
 }
+
+.dots-container{
+  display: flex;
+  background-color: brown;
+  justify-content: center;
+  align-items: center;
+  height: 25px;
+}
+
+.dots-container .dot{
+  margin: 20px;
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  background-color: #FF5722;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.dots-container .dot.active{
+  background-color: gray;
+}
+/* 
+.indicator div.active {
+  background-color: #000;
+} */

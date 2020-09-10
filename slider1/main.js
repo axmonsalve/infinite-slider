@@ -1,14 +1,33 @@
+
 const slideContainer = document.querySelector('.container');
 const slide = document.querySelector('.slides');
 const nextBtn = document.getElementById('next-btn');
 const prevBtn = document.getElementById('prev-btn');
 const slideControls = document.querySelector('.slide-controls');
-const interval = 3000;
+const dotsContainer = document.querySelector('.dots-container');
+const interval = 2300;
 
 let slides = document.querySelectorAll('.slide');
 let index = 1;
 let slideId;
+let dot;
 
+//Create indicators
+for (let i = 0; i < slides.length; i++) {
+  console.log(slides[i]);
+  dot = document.createElement('span');
+  dot.classList.add('dot');
+  dot.setAttribute('id', `${i + 2}`)
+  // dot.setAttribute('onclick', 'currentSlide(index)')
+  dotsContainer.appendChild(dot);
+}
+
+// const dots = dotsContainer.children;
+// dots.map((element, i) => {
+//   element.setAttribute('id', 'i')
+// });
+
+//Clone first & last slide img
 const firstClone = slides[0].cloneNode(true);
 const lastClone = slides[slides.length-1].cloneNode(true);
 
@@ -21,6 +40,8 @@ slide.prepend(lastClone);
 const slideWidth = slides[index].clientWidth;
 
 slide.style.transform = `translate(${-slideWidth * index}px)`;
+
+
 
 const startSlide = () => {
   slideId = setInterval(() => {
@@ -50,6 +71,7 @@ const moveToNextSlide = () => {
   index++;
   slide.style.transform = `translate(${-slideWidth * index}px)`;
   slide.style.transition = '.7s'
+  indicatorIndex();
 };
 
 const moveToPreviousSlide = () => {
@@ -57,7 +79,14 @@ const moveToPreviousSlide = () => {
   index--;
   slide.style.transform = `translate(${-slideWidth * index}px)`;
   slide.style.transition = '.7s'
+  indicatorIndex();
 }; 
+
+//Paint indicator
+const indicatorIndex = () => {
+  console.log(index);
+  dot.style.backGroundColor = 'black'
+};
 
 slideContainer.addEventListener('mouseenter', () => {
   clearInterval(slideId);
